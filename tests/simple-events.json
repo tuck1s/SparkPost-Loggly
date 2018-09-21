@@ -1,0 +1,16 @@
+[
+  {
+    "msys": {
+      "message_event": {
+        "type": "test1"
+      }
+    }
+   },
+  {
+    "msys": {
+      "message_event": {
+        "type": "test2"
+      }
+    }
+  }
+]
