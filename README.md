@@ -17,7 +17,7 @@ In AWS, create a new Lambda function. Specify name, Runtime = Go 1.x, choose rol
 
 ## Testing the adapter deployment
 
-####Input
+#### Input
 You can directly feed input to the adapter app using `curl` or Postman, so that you can see the https response
 code coming back. Here is a minimal example, Replace the URL with your own.
 
@@ -43,4 +43,3 @@ Note that adapter output is line-oriented, i.e. each event is separated by newli
 #### Input to Loggly
 You can also provide test inputs to the Loggly directly using `curl` or Postman,
 see [this article](https://www.loggly.com/docs/http-bulk-endpoint/).
- 

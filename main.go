@@ -5,21 +5,22 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-lambda-go/lambda"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 	"runtime"
 	"strings"
+
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
 // Lambda function handler
 func Handler(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
 	// stdout and stderr are sent to AWS CloudWatch Logs
-	log.Printf("Incoming: %s %s body %d bytes from SourceIP %s\n", req.HTTPMethod, req.Path, len(req.Body), req.RequestContext.Identity.SourceIP)
+	fmt.Printf("Incoming: %s %s body %d bytes from SourceIP %s\n", req.HTTPMethod, req.Path, len(req.Body), req.RequestContext.Identity.SourceIP)
 
 	switch req.HTTPMethod {
 	case "POST":
@@ -80,7 +81,7 @@ func rest_webhooks_post(session events.APIGatewayProxyRequest) (events.APIGatewa
 	resBuffer := new(bytes.Buffer)
 	resBuffer.ReadFrom(res.Body)
 	resStr := resBuffer.String()
-	log.Printf("Outgoing: %s %s: Response %d %s", req.Method, logglyUrl, res.StatusCode, resStr)
+	fmt.Printf("Outgoing: %s %s: Response %d %s", req.Method, logglyUrl, res.StatusCode, resStr)
 
 	return events.APIGatewayProxyResponse{
 		Body:       resStr,
